@@ -393,72 +393,36 @@ html.lenis body {
     align-items: center;
 }
 
-.cup-container {
+.real-cup-container {
     position: relative;
-    width: 120px;
-    height: 140px;
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+    width: 300px;
+    /* Large size */
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.cup-body {
+.real-cup-img {
     width: 100%;
     height: 100%;
-    background: #fff;
-    border-radius: 0 0 50px 50px;
+    object-fit: contain;
     position: relative;
-    overflow: hidden;
-    /* Ceramic shading */
-    box-shadow: inset -10px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 2;
 }
 
-.cup-handle {
-    position: absolute;
-    top: 20px;
-    right: -35px;
-    width: 35px;
-    height: 65px;
-    border: 8px solid #fff;
-    border-left: none;
-    border-radius: 0 20px 20px 0;
-    z-index: -1;
-    /* Behind cup */
-    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.05);
-}
-
-.cup-fill {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0%;
-    background: linear-gradient(to right, #3e2b22, #5e4033, #3e2b22);
-    transition: none;
-    /* Liquid surface effect can be simulated with a top border */
-    border-top: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.cup-fill::after {
-    /* Bubbles or foam hint */
-    content: '';
+/* Mask to simulate filling is complex on a real photo without layers.
+   Alternative: We reveal the whole image from bottom up to simulate appearing/filling. */
+.cup-mask {
     position: absolute;
     top: 0;
-    left: 10%;
-    width: 80%;
-    height: 10px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
-    opacity: 0.5;
-}
-
-.smoke {
-    position: absolute;
-    top: -50px;
-    /* Higher up */
-    left: 50%;
-    width: 15px;
-    height: 40px;
-    background: linear-gradient(to top, rgba(200, 200, 200, 0.6), transparent);
-    border-radius: 10px;
-    filter: blur(8px);
-    opacity: 0;
-    transform: translateX(-50%);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Start full height (covering everything) */
+    background-color: var(--color-secondary);
+    /* Same as background */
+    z-index: 3;
+    /* We will animate height -> 0% to reveal the cup */
+    transition: none;
 }

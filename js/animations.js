@@ -87,19 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
             delay: 0.2
         });
 
-    // Inject Page Transition HTML
+    // Inject Page Transition HTML (Realistic Image)
     if (!document.querySelector('.page-transition')) {
         const transitionEl = document.createElement('div');
         transitionEl.classList.add('page-transition');
         transitionEl.innerHTML = `
-            <div class="cup-container">
-                <div class="cup-body">
-                    <div class="cup-fill"></div>
-                </div>
-                <div class="cup-handle"></div>
-                <div class="smoke" style="margin-left: -15px;"></div>
-                <div class="smoke" style="margin-left: 0;"></div>
-                <div class="smoke" style="margin-left: 15px;"></div>
+            <div class="real-cup-container">
+                <img src="assets/coffee_cup_transition.png" alt="Coffee Cup" class="real-cup-img">
+                <div class="cup-mask"></div>
             </div>
         `;
         document.body.appendChild(transitionEl);
@@ -116,27 +111,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 onComplete: () => window.location.href = target
             });
 
+            // Reset state
+            gsap.set('.cup-mask', { height: '100%' }); // Full mask (hidden)
+            gsap.set('.page-transition', { y: '100%' });
+
             // Slide up overlay
             tl.to('.page-transition', {
                 y: 0,
                 duration: 0.5,
                 ease: 'power3.inOut'
             })
-                // Fill cup
-                .to('.cup-fill', {
-                    height: '100%',
-                    duration: 1.5,
-                    ease: 'power1.inIn'
-                })
-                // Smoke effect
-                .to('.smoke', {
-                    opacity: 0.6,
-                    y: -20,
-                    stagger: 0.2,
-                    duration: 0.5,
-                    repeat: 2, // Finite repeat so timeline completes
-                    yoyo: true
-                }, '-=0.5');
+                // Reveal Coffee (simulate filling by reducing mask height)
+                .to('.cup-mask', {
+                    height: '0%',
+                    duration: 0.8, // Slightly longer than 0.5 for effect
+                    ease: 'power1.inOut' // Smooth liquid feel
+                });
         });
     });
 
@@ -152,38 +142,34 @@ document.addEventListener('DOMContentLoaded', () => {
         heroTl.from('.hero-logo', {
             opacity: 0,
             scale: 0.8,
-            duration: 1.2,
+            duration: 0.6, // Sped up
             ease: 'elastic.out(1, 0.5)',
-            delay: 0.2
+            delay: 0.1
         });
 
         // Mouse Parallax Effect for Logo
         const heroSection = document.querySelector('.hero');
         heroSection.addEventListener('mousemove', (e) => {
-            const x = (e.clientX - window.innerWidth / 2) * 0.015; // Reduced movement
+            const x = (e.clientX - window.innerWidth / 2) * 0.015;
             const y = (e.clientY - window.innerHeight / 2) * 0.015;
 
             gsap.to('.hero-logo', {
                 x: x,
                 y: y,
-                duration: 1, // Slower duration for heavier feel
+                duration: 0.5, // Sped up response
                 ease: 'power1.out'
             });
         });
 
         // Mobile Gyroscope Parallax
         window.addEventListener('deviceorientation', (e) => {
-            // Gamma is left/right tilt (-90 to 90)
-            // Beta is front/back tilt (-180 to 180)
-
-            // Normalize values for subtle effect
             const x = e.gamma ? e.gamma * 2 : 0;
-            const y = e.beta ? (e.beta - 45) * 2 : 0; // Subtract 45 to account for natural holding angle
+            const y = e.beta ? (e.beta - 45) * 2 : 0;
 
             gsap.to('.hero-logo', {
                 x: x,
                 y: y,
-                duration: 1.5,
+                duration: 0.8,
                 ease: 'power2.out'
             });
         });
@@ -192,39 +178,39 @@ document.addEventListener('DOMContentLoaded', () => {
     heroTl.to('.hero-title', {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 0.5, // Sped up
         ease: 'power3.out',
-    }, '-=0.8')
+    }, '-=0.4')
         .to('.hero-subtitle', {
             opacity: 1,
             y: 0,
-            duration: 1,
+            duration: 0.5, // Sped up
             ease: 'power3.out'
-        }, '-=0.6')
+        }, '-=0.4')
         .to('.hero-content p', {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.5, // Sped up
             ease: 'power3.out'
-        }, '-=0.5')
+        }, '-=0.4')
         .to('.hero-btn', {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.5, // Sped up
             ease: 'power3.out'
-        }, '-=0.5');
+        }, '-=0.4');
 
     // General Reveal Animation (ScrollTrigger)
     gsap.utils.toArray('.animate-text').forEach(element => {
         gsap.from(element, {
             scrollTrigger: {
                 trigger: element,
-                start: 'top 80%',
+                start: 'top 85%', // Triggers sooner
                 toggleActions: 'play none none reverse'
             },
-            y: 50,
+            y: 30,
             opacity: 0,
-            duration: 1,
+            duration: 0.6, // Sped up
             ease: 'power3.out'
         });
     });
@@ -236,21 +222,21 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.from(container, {
             scrollTrigger: {
                 trigger: container,
-                start: 'top 75%'
+                start: 'top 80%'
             },
             clipPath: 'inset(0 100% 0 0)',
-            duration: 1.5,
+            duration: 0.8, // Sped up
             ease: 'power4.out'
         });
 
         gsap.from(img, {
             scrollTrigger: {
                 trigger: container,
-                start: 'top 75%',
+                start: 'top 80%',
                 scrub: true
             },
-            scale: 1.2,
-            duration: 1
+            scale: 1.1,
+            duration: 0.5
         });
     });
 });
