@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     y: -20,
                     stagger: 0.2,
                     duration: 0.5,
-                    repeat: -1,
+                    repeat: 2, // Finite repeat so timeline completes
                     yoyo: true
                 }, '-=0.5');
         });
