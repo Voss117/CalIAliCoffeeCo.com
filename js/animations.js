@@ -87,23 +87,28 @@ document.addEventListener('DOMContentLoaded', () => {
             delay: 0.2
         });
 
-    // Inject Page Transition HTML (Realistic Image)
+    // Inject Page Transition HTML (CSS Cup)
     if (!document.querySelector('.page-transition')) {
         const transitionEl = document.createElement('div');
         transitionEl.classList.add('page-transition');
         transitionEl.innerHTML = `
-            <div class="real-cup-container">
-                <img src="assets/coffee_cup_transition.png" alt="Coffee Cup" class="real-cup-img">
-                <div class="cup-mask"></div>
+            <div class="cup-container">
+                <div class="cup-body">
+                    <div class="cup-fill"></div>
+                </div>
+                <div class="cup-handle"></div>
+                <div class="smoke" style="margin-left: -15px;"></div>
+                <div class="smoke" style="margin-left: 0;"></div>
+                <div class="smoke" style="margin-left: 15px;"></div>
             </div>
         `;
         document.body.appendChild(transitionEl);
     }
 
-    // Handle Order Links
-    const orderLinks = document.querySelectorAll('a[href="order.html"]');
-    orderLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    // Handle Order Links (Click Delegation for all persistent and dynamic links)
+    document.body.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href="order.html"]');
+        if (link) {
             e.preventDefault();
             const target = link.getAttribute('href');
 
@@ -111,23 +116,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 onComplete: () => window.location.href = target
             });
 
-            // Reset state
-            gsap.set('.cup-mask', { height: '100%' }); // Full mask (hidden)
-            gsap.set('.page-transition', { y: '100%' });
-
             // Slide up overlay
             tl.to('.page-transition', {
                 y: 0,
                 duration: 0.5,
                 ease: 'power3.inOut'
             })
-                // Reveal Coffee (simulate filling by reducing mask height)
-                .to('.cup-mask', {
-                    height: '0%',
-                    duration: 0.8, // Slightly longer than 0.5 for effect
-                    ease: 'power1.inOut' // Smooth liquid feel
-                });
-        });
+                // Fill cup (1.5s as requested)
+                .to('.cup-fill', {
+                    height: '100%',
+                    duration: 1.5,
+                    ease: 'power1.inIn'
+                })
+                // Smoke effect (more visible)
+                .to('.smoke', {
+                    opacity: 0.8,
+                    y: -30,
+                    stagger: 0.2,
+                    duration: 0.8,
+                    repeat: 2,
+                    yoyo: true
+                }, '-=0.5');
+        }
     });
 
     // Existing GSAP Logic
