@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Mouse Parallax Effect for Logo
         const heroSection = document.querySelector('.hero');
         heroSection.addEventListener('mousemove', (e) => {
-            const x = (e.clientX - window.innerWidth / 2) * 0.05; // 5% movement factor
-            const y = (e.clientY - window.innerHeight / 2) * 0.05;
+            const x = (e.clientX - window.innerWidth / 2) * 0.015; // Reduced movement
+            const y = (e.clientY - window.innerHeight / 2) * 0.015;
 
             gsap.to('.hero-logo', {
                 x: x,
                 y: y,
-                duration: 0.5,
+                duration: 1, // Slower duration for heavier feel
                 ease: 'power1.out'
             });
         });
