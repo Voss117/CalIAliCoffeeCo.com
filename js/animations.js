@@ -1,4 +1,93 @@
+// Inject Lenis Script
+const lenisScript = document.createElement('script');
+lenisScript.src = 'https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js';
+document.head.appendChild(lenisScript);
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Inject Custom Cursor
+    const cursor = document.createElement('div');
+    cursor.classList.add('cursor');
+    document.body.appendChild(cursor);
+
+    // Inject Preloader (Only if not already present)
+    if (!document.querySelector('.preloader')) {
+        const preloader = document.createElement('div');
+        preloader.classList.add('preloader');
+        preloader.innerHTML = `
+            <img src="assets/logo-black.png" class="preloader-logo" alt="Loading...">
+            <div class="preloader-line"></div>
+        `;
+        document.body.prepend(preloader);
+    }
+
+    // Wait for Lenis to load
+    lenisScript.onload = () => {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        // Connect Lenis to ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+    };
+
+    // Cursor Logic
+    document.addEventListener('mousemove', (e) => {
+        gsap.to(cursor, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: 0.1,
+            ease: 'power2.out'
+        });
+    });
+
+    // Cursor Hover Effects
+    const hoverElements = document.querySelectorAll('a, button, .hero-logo');
+    hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+    });
+
+    // Preloader Animation
+    const tl = gsap.timeline();
+
+    tl.to('.preloader-logo', {
+        opacity: 1,
+        y: -20,
+        duration: 0.8,
+        ease: 'power3.out'
+    })
+        .to('.preloader-line', {
+            width: '200px',
+            duration: 1.2,
+            ease: 'power2.inOut'
+        }, '-=0.5')
+        .to('.preloader', {
+            y: '-100%',
+            duration: 0.8,
+            ease: 'power4.inOut',
+            delay: 0.2
+        });
+
+    // Existing GSAP Logic
     gsap.registerPlugin(ScrollTrigger);
 
     // Hero Animation
