@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     cursor.classList.add('cursor');
     document.body.appendChild(cursor);
 
-    // Inject Preloader (Only if not already present)
-    if (!document.querySelector('.preloader')) {
+    // Inject Preloader (Skipped on order.html)
+    if (!document.querySelector('.preloader') && !window.location.href.includes('order.html')) {
         const preloader = document.createElement('div');
         preloader.classList.add('preloader');
         preloader.innerHTML = `
@@ -67,25 +67,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Preloader Animation
-    const tl = gsap.timeline();
+    // Preloader Animation (Faster & Conditional)
+    if (document.querySelector('.preloader')) {
+        const tl = gsap.timeline();
 
-    tl.to('.preloader-logo', {
-        opacity: 1,
-        y: -20,
-        duration: 0.8,
-        ease: 'power3.out'
-    })
-        .to('.preloader-line', {
-            width: '200px',
-            duration: 1.2,
-            ease: 'power2.inOut'
-        }, '-=0.5')
-        .to('.preloader', {
-            y: '-100%',
-            duration: 0.8,
-            ease: 'power4.inOut',
-            delay: 0.2
-        });
+        tl.to('.preloader-logo', {
+            opacity: 1,
+            y: -20,
+            duration: 0.4,
+            ease: 'power3.out'
+        })
+            .to('.preloader-line', {
+                width: '200px',
+                duration: 0.5,
+                ease: 'power2.inOut'
+            }, '-=0.2')
+            .to('.preloader', {
+                y: '-100%',
+                duration: 0.5,
+                ease: 'power4.inOut',
+                delay: 0.1
+            });
+    }
 
     // Inject Page Transition HTML (CSS Cup)
     if (!document.querySelector('.page-transition')) {
@@ -152,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heroTl.from('.hero-logo', {
             opacity: 0,
             scale: 0.8,
-            duration: 0.6, // Sped up
+            duration: 0.4, // Faster
             ease: 'elastic.out(1, 0.5)',
             delay: 0.1
         });
@@ -188,27 +191,27 @@ document.addEventListener('DOMContentLoaded', () => {
     heroTl.to('.hero-title', {
         opacity: 1,
         y: 0,
-        duration: 0.5, // Sped up
+        duration: 0.4,
         ease: 'power3.out',
-    }, '-=0.4')
+    }, '-=0.3')
         .to('.hero-subtitle', {
             opacity: 1,
             y: 0,
-            duration: 0.5, // Sped up
+            duration: 0.4,
             ease: 'power3.out'
-        }, '-=0.4')
+        }, '-=0.3')
         .to('.hero-content p', {
             opacity: 1,
             y: 0,
-            duration: 0.5, // Sped up
+            duration: 0.4,
             ease: 'power3.out'
-        }, '-=0.4')
+        }, '-=0.3')
         .to('.hero-btn', {
             opacity: 1,
             y: 0,
-            duration: 0.5, // Sped up
+            duration: 0.4,
             ease: 'power3.out'
-        }, '-=0.4');
+        }, '-=0.3');
 
     // General Reveal Animation (ScrollTrigger)
     gsap.utils.toArray('.animate-text').forEach(element => {
