@@ -28,6 +28,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 ease: 'power1.out'
             });
         });
+
+        // Mobile Gyroscope Parallax
+        window.addEventListener('deviceorientation', (e) => {
+            // Gamma is left/right tilt (-90 to 90)
+            // Beta is front/back tilt (-180 to 180)
+
+            // Normalize values for subtle effect
+            const x = e.gamma ? e.gamma * 2 : 0;
+            const y = e.beta ? (e.beta - 45) * 2 : 0; // Subtract 45 to account for natural holding angle
+
+            gsap.to('.hero-logo', {
+                x: x,
+                y: y,
+                duration: 1.5,
+                ease: 'power2.out'
+            });
+        });
     }
 
     heroTl.to('.hero-title', {
