@@ -4,19 +4,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hero Animation
     const heroTl = gsap.timeline();
 
+    // Animate Logo if present
+    const logoExists = document.querySelector('.hero-logo');
+    if (logoExists) {
+        heroTl.from('.hero-logo', {
+            opacity: 0,
+            scale: 0.8,
+            duration: 1.2,
+            ease: 'elastic.out(1, 0.5)',
+            delay: 0.2
+        });
+
+        // Mouse Parallax Effect for Logo
+        const heroSection = document.querySelector('.hero');
+        heroSection.addEventListener('mousemove', (e) => {
+            const x = (e.clientX - window.innerWidth / 2) * 0.05; // 5% movement factor
+            const y = (e.clientY - window.innerHeight / 2) * 0.05;
+
+            gsap.to('.hero-logo', {
+                x: x,
+                y: y,
+                duration: 0.5,
+                ease: 'power1.out'
+            });
+        });
+    }
+
     heroTl.to('.hero-title', {
         opacity: 1,
         y: 0,
         duration: 1,
         ease: 'power3.out',
-        delay: 0.5
-    })
+    }, '-=0.8')
         .to('.hero-subtitle', {
             opacity: 1,
             y: 0,
             duration: 1,
             ease: 'power3.out'
-        }, '-=0.5')
+        }, '-=0.6')
         .to('.hero-content p', {
             opacity: 1,
             y: 0,
