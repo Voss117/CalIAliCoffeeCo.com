@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Beans | Cali Ali Coffee Co.</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            height: 300px;
+            background: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .price {
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-top: 0.5rem;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header-placeholder"></header>
+
+    <main style="padding-top: 120px; padding-bottom: 6rem;">
+        <div class="container">
+            <h1 class="animate-text" style="font-size: 3rem; margin-bottom: 1rem;">Whole Bean Store</h1>
+            <p class="animate-text" style="max-width: 600px; margin-bottom: 4rem;">
+                Freshly roasted in Kansas, brought to you in San Diego. Enjoy the perfect brew at home.
+            </p>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card animate-text">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=2070&auto=format&fit=crop"
+                            alt="Morning Blend">
+                    </div>
+                    <div class="product-info">
+                        <h3>San Diego Morning</h3>
+                        <p class="price">$18.00</p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Light Roast • Citrus & Floral</p>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;">Add to
+                            Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card animate-text">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1887&auto=format&fit=crop"
+                            alt="Dark Roast">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dodge City Dark</h3>
+                        <p class="price">$18.00</p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Dark Roast • Chocolate & Earthy
+                        </p>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;">Add to
+                            Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card animate-text">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1621996536098-b8054045f271?q=80&w=1964&auto=format&fit=crop"
+                            alt="Espresso">
+                    </div>
+                    <div class="product-info">
+                        <h3>Cali Ali Espresso</h3>
+                        <p class="price">$20.00</p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Medium-Dark • Rich & Creamy</p>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;">Add to
+                            Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card animate-text">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=2080&auto=format&fit=crop"
+                            alt="Single Origin">
+                    </div>
+                    <div class="product-info">
+                        <h3>Reserve Single Origin</h3>
+                        <p class="price">$24.00</p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Light Roast • Berry & Nut</p>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;">Add to
+                            Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer-placeholder"></footer>
+    <script src="js/components.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+
+</html>

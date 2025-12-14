@@ -1,0 +1,72 @@
+document.addEventListener('DOMContentLoaded', () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero Animation
+    const heroTl = gsap.timeline();
+
+    heroTl.to('.hero-title', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        delay: 0.5
+    })
+        .to('.hero-subtitle', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out'
+        }, '-=0.5')
+        .to('.hero-content p', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+        }, '-=0.5')
+        .to('.hero-btn', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out'
+        }, '-=0.5');
+
+    // General Reveal Animation (ScrollTrigger)
+    gsap.utils.toArray('.animate-text').forEach(element => {
+        gsap.from(element, {
+            scrollTrigger: {
+                trigger: element,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out'
+        });
+    });
+
+    // Image Reveal
+    gsap.utils.toArray('.image-reveal').forEach(container => {
+        let img = container.querySelector('img');
+
+        gsap.from(container, {
+            scrollTrigger: {
+                trigger: container,
+                start: 'top 75%'
+            },
+            clipPath: 'inset(0 100% 0 0)',
+            duration: 1.5,
+            ease: 'power4.out'
+        });
+
+        gsap.from(img, {
+            scrollTrigger: {
+                trigger: container,
+                start: 'top 75%',
+                scrub: true
+            },
+            scale: 1.2,
+            duration: 1
+        });
+    });
+});

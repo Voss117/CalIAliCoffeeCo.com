@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cali Ali Coffee Company | San Diego Roast</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <header id="header-placeholder"></header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero"
+            style="height: 100vh; display: flex; align-items: center; justify-content: center; background: #e0e0e0; position: relative; overflow: hidden;">
+            <div class="hero-bg"
+                style="position: absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle, #f4f1ea 0%, #dcd9d2 100%); z-index: -1;">
+            </div>
+
+            <div class="container" style="text-align: center; position: relative; z-index: 1;">
+                <div class="hero-content">
+                    <h1 class="hero-title"
+                        style="font-size: 5rem; margin-bottom: 1rem; opacity: 0; transform: translateY(30px);">CALI ALI
+                    </h1>
+                    <h2 class="hero-subtitle"
+                        style="font-size: 2rem; font-weight: 400; color: var(--color-accent); margin-bottom: 2rem; opacity: 0; transform: translateY(30px);">
+                        Coffee Company</h2>
+                    <p style="margin-bottom: 3rem; opacity: 0; transform: translateY(30px);">San Diego Vibes. Kansas
+                        Soul.</p>
+                    <a href="order.html" class="btn hero-btn" style="opacity: 0; transform: translateY(30px);">Order
+                        Now</a>
+                </div>
+            </div>
+
+            <!-- Decorative Elements -->
+            <div class="bean-decoration"
+                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none;">
+                <!-- Animated bean circles or shapes could go here -->
+            </div>
+        </section>
+
+        <!-- Brief About / Feature -->
+        <section style="padding: 8rem 0;">
+            <div class="container">
+                <div style="display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h2 class="animate-text">From Dodge City<br>to San Diego</h2>
+                        <p class="animate-text" style="margin-top: 2rem; font-size: 1.1rem; color: #555;">
+                            Ali brings the finest roasted beans from the heart of Kansas to the sunny shores of
+                            California.
+                            Partnering with Red Beard Coffee Co., we white-label premium roasts to serve you the perfect
+                            cup.
+                        </p>
+                        <a href="about.html" class="btn-outline animate-text"
+                            style="margin-top: 2rem; display: inline-block;">Read Our Story</a>
+                    </div>
+                    <div class="image-reveal"
+                        style="flex: 1; height: 400px; background: #ddd; border-radius: 1px; overflow: hidden; position: relative;">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop"
+                            alt="Coffee pouring" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section
+            style="background-color: var(--color-primary); color: var(--color-secondary); padding: 6rem 0; text-align: center;">
+            <div class="container">
+                <h2 style="color: var(--color-secondary); margin-bottom: 2rem;">Craving a Cup?</h2>
+                <p style="margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Skip the line. Order your favorite roast online and pick it up fresh.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="order.html" class="btn"
+                        style="background-color: var(--color-secondary); color: var(--color-primary); border-color: var(--color-secondary);">Order
+                        Pickup</a>
+                    <a href="shop.html" class="btn btn-outline"
+                        style="border-color: var(--color-secondary); color: var(--color-secondary);">Shop Beans</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer-placeholder"></footer>
+
+    <!-- Scripts -->
+    <script src="js/components.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+
+</html>
