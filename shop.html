@@ -85,8 +85,10 @@
                         <h3>San Diego Morning</h3>
                         <p class="price">$18.00</p>
                         <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Light Roast • Citrus & Floral</p>
-                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;">Add to
-                            Cart</button>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;"
+                            onclick="cart.addItem({id: 'prod_1', name: 'San Diego Morning', price: 18.00, image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=2070&auto=format&fit=crop'})">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -101,8 +103,10 @@
                         <p class="price">$18.00</p>
                         <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Dark Roast • Chocolate & Earthy
                         </p>
-                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;">Add to
-                            Cart</button>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;"
+                            onclick="cart.addItem({id: 'prod_2', name: 'Dodge City Dark', price: 18.00, image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1887&auto=format&fit=crop'})">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -116,8 +120,10 @@
                         <h3>Cali Ali Espresso</h3>
                         <p class="price">$20.00</p>
                         <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Medium-Dark • Rich & Creamy</p>
-                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;">Add to
-                            Cart</button>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;"
+                            onclick="cart.addItem({id: 'prod_3', name: 'Cali Ali Espresso', price: 20.00, image: 'https://images.unsplash.com/photo-1595434091143-b375ced5fe5c?q=80&w=1935&auto=format&fit=crop'})">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -131,8 +137,10 @@
                         <h3>Reserve Single Origin</h3>
                         <p class="price">$24.00</p>
                         <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Light Roast • Berry & Nut</p>
-                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;">Add to
-                            Cart</button>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.8rem;"
+                            onclick="cart.addItem({id: 'prod_4', name: 'Reserve Single Origin', price: 24.00, image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=2080&auto=format&fit=crop'})">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>
@@ -141,6 +149,7 @@
 
     <footer id="footer-placeholder"></footer>
     <script src="js/components.js"></script>
+    <script src="js/cart.js"></script>
     <script src="js/animations.js"></script>
 </body>
 

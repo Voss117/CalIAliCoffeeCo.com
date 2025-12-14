@@ -8,6 +8,9 @@ async function loadComponent(elementId, filePath) {
         // Re-initialize any scripts or listeners if needed
         if (elementId === 'header-placeholder') {
             initMobileMenu();
+            if (window.cart) {
+                window.cart.updateHeaderCount();
+            }
         }
     } catch (error) {
         console.error('Error loading component:', error);
