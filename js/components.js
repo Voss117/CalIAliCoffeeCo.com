@@ -4,7 +4,7 @@ async function loadComponent(elementId, filePath) {
         const response = await fetch(filePath);
         const data = await response.text();
         document.getElementById(elementId).innerHTML = data;
-        
+
         // Re-initialize any scripts or listeners if needed
         if (elementId === 'header-placeholder') {
             initMobileMenu();
@@ -18,7 +18,7 @@ async function loadComponent(elementId, filePath) {
 function initMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (mobileMenu && navLinks) {
         mobileMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -41,6 +41,6 @@ window.addEventListener('scroll', () => {
 
 // Load components on DOM Content Loaded
 document.addEventListener('DOMContentLoaded', () => {
-    loadComponent('header-placeholder', 'components/header.html');
-    loadComponent('footer-placeholder', 'components/footer.html');
+    loadComponent('header-placeholder', './components/header.html');
+    loadComponent('footer-placeholder', './components/footer.html');
 });
