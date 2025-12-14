@@ -374,7 +374,75 @@ html.lenis body {
 
 .preloader-line {
     width: 0%;
-    height: 2px;
     background-color: var(--color-primary);
     margin-top: 20px;
+}
+
+/* --- Page Transition (Coffee Cup) --- */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-secondary);
+    z-index: 10001;
+    /* Above preloader */
+    transform: translateY(100%);
+    /* Start hidden below */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cup-container {
+    position: relative;
+    width: 120px;
+    height: 140px;
+}
+
+.cup-body {
+    width: 100%;
+    height: 100%;
+    border: 6px solid var(--color-primary);
+    border-top: none;
+    border-radius: 0 0 50px 50px;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.cup-handle {
+    position: absolute;
+    top: 20px;
+    right: -35px;
+    width: 30px;
+    height: 60px;
+    border: 6px solid var(--color-primary);
+    border-left: none;
+    border-radius: 0 20px 20px 0;
+}
+
+.cup-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: #4a3b32;
+    /* Rich coffee brown */
+    transition: none;
+    /* Controlled by GSAP */
+}
+
+.smoke {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 10px;
+    height: 30px;
+    background: #aaa;
+    border-radius: 5px;
+    filter: blur(5px);
+    opacity: 0;
 }

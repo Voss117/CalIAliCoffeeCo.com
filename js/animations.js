@@ -87,6 +87,59 @@ document.addEventListener('DOMContentLoaded', () => {
             delay: 0.2
         });
 
+    // Inject Page Transition HTML
+    if (!document.querySelector('.page-transition')) {
+        const transitionEl = document.createElement('div');
+        transitionEl.classList.add('page-transition');
+        transitionEl.innerHTML = `
+            <div class="cup-container">
+                <div class="cup-body">
+                    <div class="cup-fill"></div>
+                </div>
+                <div class="cup-handle"></div>
+                <div class="smoke" style="margin-left: -15px;"></div>
+                <div class="smoke" style="margin-left: 0;"></div>
+                <div class="smoke" style="margin-left: 15px;"></div>
+            </div>
+        `;
+        document.body.appendChild(transitionEl);
+    }
+
+    // Handle Order Links
+    const orderLinks = document.querySelectorAll('a[href="order.html"]');
+    orderLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = link.getAttribute('href');
+
+            const tl = gsap.timeline({
+                onComplete: () => window.location.href = target
+            });
+
+            // Slide up overlay
+            tl.to('.page-transition', {
+                y: 0,
+                duration: 0.5,
+                ease: 'power3.inOut'
+            })
+                // Fill cup
+                .to('.cup-fill', {
+                    height: '100%',
+                    duration: 1.5,
+                    ease: 'power1.inIn'
+                })
+                // Smoke effect
+                .to('.smoke', {
+                    opacity: 0.6,
+                    y: -20,
+                    stagger: 0.2,
+                    duration: 0.5,
+                    repeat: -1,
+                    yoyo: true
+                }, '-=0.5');
+        });
+    });
+
     // Existing GSAP Logic
     gsap.registerPlugin(ScrollTrigger);
 
