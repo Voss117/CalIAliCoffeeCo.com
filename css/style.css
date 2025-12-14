@@ -278,6 +278,18 @@ footer {
         opacity: 0.05 !important;
         /* Slightly more subtle on small screens */
     }
+
+    /* Stack split contents on mobile */
+    .split-flex {
+        flex-direction: column-reverse !important;
+        /* Text on top usually preferred for SEO/UX if implied order */
+        gap: 2rem !important;
+    }
+
+    .split-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
 }
 
 /* Focus States for Accessibility */
